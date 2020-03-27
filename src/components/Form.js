@@ -6,28 +6,30 @@ import * as yup from "yup";
 
 const formSchema = yup.object().shape({
     name: yup.string().required("Name is a required field."),  
-  Sausage:yup.boolean().oneOf([true],) ,
-  Pepperoni: yup.boolean().oneOf([true], ),
-  canadianBecon: yup.boolean().oneOf([true], ),
-  spicyitalionSausage: yup.boolean().oneOf([true], ),
-  Grilledchicker: yup.boolean().oneOf([true], ),
-  Onions: yup.boolean().oneOf([true], ),
-  GreenPepper: yup.boolean().oneOf([true], ),
-  DicedTomatos: yup.boolean().oneOf([true], ),
-  BlackOlives: yup.boolean().oneOf([true], ),
-  RoastedGarlic: yup.boolean().oneOf([true], ),
-  ArtichokeHearts: yup.boolean().oneOf([true], ),
-  ThreeCheese: yup.boolean().oneOf([true], ),
-  Pineapple: yup.boolean().oneOf([true], ),
-  Extracheese: yup.boolean().oneOf([true], ),
+      positions: yup.string().required("pick a size"),
 
-  Originalred: yup.boolean().oneOf([true], ),
-  GarlicRanch:yup.boolean().oneOf([true], ),
-  BBQSauce: yup.boolean().oneOf([true], ),
-  spinachAlfredo: yup.boolean().oneOf([true], ),
+  Sausage:yup.boolean().defined() ,
+  Pepperoni: yup.boolean().defined(),
+  canadianBecon: yup.boolean().defined(),
+  spicyitalionSausage: yup.boolean().defined(),
+  Grilledchicker: yup.boolean().defined(),
+  Onions: yup.boolean().defined(),
+  GreenPepper: yup.boolean().defined(),
+  DicedTomatos: yup.boolean().defined(),
+  BlackOlives: yup.boolean().defined(),
+  RoastedGarlic: yup.boolean().defined(),
+  ArtichokeHearts: yup.boolean().defined(),
+  ThreeCheese: yup.boolean().defined(),
+  Pineapple: yup.boolean().defined(),
+  Extracheese: yup.boolean().defined(),
+
+  Originalred: yup.boolean().defined(),
+  GarlicRanch:yup.boolean().defined(),
+  BBQSauce: yup.boolean().defined(),
+  spinachAlfredo: yup.boolean().defined(),
 
   sauce: yup.string(),
-  positions: yup.string(),
+
   motivation: yup.string().required("must include why you'd like to join")
 });
 
@@ -38,29 +40,30 @@ export default function Form() {
  
   const [formState, setFormState] = useState({
     name: "",
+ positions: "",
 
-    Sausage:"",
-    Pepperoni:"",
-    canadianBecon:"",
-    spicyitalionSausage:"",
-    Grilledchicker:"",
-    Onions:"",
-    GreenPepper:"",
-    DicedTomatos:"",
-    BlackOlives:"",
-    RoastedGarlic:"",
-    ArtichokeHearts:"",
-    ThreeCheese:"",
-    Pineapple:"",
-    Extracheese: "",
+    Sausage:false,
+    Pepperoni:false,
+    canadianBecon:false,
+spicyitalionSausage:false,
+Grilledchicker:false,
+Onions:false,
+GreenPepper:false,
+DicedTomatos:false,
+BlackOlives:false,
+RoastedGarlic:false,
+ArtichokeHearts:false,
+ThreeCheese:false,
+Pineapple:false,
+Extracheese: false,
 
-    Originalred: "",
-GarlicRanch: "",
-BBQSauce: "",
-spinachAlfredo: "",
+Originalred: false,
+GarlicRanch: false,
+BBQSauce: false,
+spinachAlfredo: false,
 
-    sauce:"",
-    positions: "",
+ 
+   
     motivation: ""
   });
 
@@ -87,7 +90,7 @@ GarlicRanch: "",
 BBQSauce: "",
 spinachAlfredo: "",
     
-    sauce:"",
+
     positions: "",
     motivation: ""
   });
@@ -111,29 +114,29 @@ spinachAlfredo: "",
         
         setFormState({
             name: "",
+positions: (res.data.size),
+          Sausage:false,
+          Pepperoni:false,
+          canadianBecon:false,
+spicyitalionSausage:false,
+Grilledchicker:false,
+Onions:false,
+GreenPepper:false,
+DicedTomatos:false,
+BlackOlives:false,
+RoastedGarlic:false,
+ArtichokeHearts:false,
+ThreeCheese:false,
+Pineapple:false,
+Extracheese: false,
 
-          Sausage:"",
-          Pepperoni:"",
-          canadianBecon:"",
-spicyitalionSausage:"",
-Grilledchicker:"",
-Onions:"",
-GreenPepper:"",
-DicedTomatos:"",
-BlackOlives:"",
-RoastedGarlic:"",
-ArtichokeHearts:"",
-ThreeCheese:"",
-Pineapple:"",
-Extracheese: "",
+Originalred: false,
+GarlicRanch: false,
+BBQSauce: false,
+spinachAlfredo: false,
 
-Originalred: "",
-GarlicRanch: "",
-BBQSauce: "",
-spinachAlfredo: "",
 
-sauce:"",
-          positions: "",
+          
           motivation: ""
         });
       })
@@ -173,31 +176,33 @@ sauce:"",
 
   return (
     <form onSubmit={formSubmit}>
-<div>build Your Own Pizza</div>
+<div><h1>build Your Own Pizza</h1></div>
 <img ></img>
 <label htmlFor="name">
          Name
         <input
           type="text"
            name="name"
+           id = 'nameinput'
+           placeholder = 'Name'
           value={formState.name}
           onChange={inputChange}
           />  {errors.name.length > 0  ? <p className="error">{errors.name}</p> : null}
         
       </label>
-      <div>build Your Own Pizza</div>
+      <div><h1>build Your Own Pizza</h1></div>
 <div><h1>choice of Size</h1> <p>required</p></div>
       <label htmlFor='positions'>
         
         <select id='positions' name='positions' onChange={inputChange}>
-          <option value='select'>select</option>
+          <option value ={null}>select</option>
           <option value='small'>small</option>
           <option value='medium'>medium</option>
           <option value='large'>large</option>
         </select>
       </label>
       <div><h1>choice of Sauce</h1> <p>required</p></div>
-      <label htmlFor='sauce'className='terms'>
+      <label htmlFor='Originalred'className='terms'>
         
               <input
           type='checkbox'
@@ -399,7 +404,7 @@ sauce:"",
      
       
       <pre>{JSON.stringify(post, null, 2)}</pre>
-      <button //disabled={buttonDisabled}
+      <button name ='submit'disabled={buttonDisabled}
       >Add to order</button>
     </form>
   );

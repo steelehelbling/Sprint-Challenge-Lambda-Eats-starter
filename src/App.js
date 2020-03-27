@@ -17,9 +17,9 @@ const App = () => {
   return (
     <Router>
       <nav className="navbar">
-        <li>
+        <div>
           <Link to="/">Home</Link>
-        </li>
+        </div>
         <li>
           <Link to="/pizza">order</Link>
         </li>
